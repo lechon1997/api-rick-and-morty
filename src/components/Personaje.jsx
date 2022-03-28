@@ -1,16 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
-import { eliminarFavorito } from "../actions";
-const Personaje = ({ personaje, dispatch }) => {
-  const eventEliminarPersonaje = () => {
-    dispatch(eliminarFavorito(personaje));
-  };
+
+const Personaje = ({ children, personaje }) => {
   return (
-    <div>
-      <img src={personaje.image} alt="imagen" />
-      <button onClick={eventEliminarPersonaje}>Eliminar personaje</button>
+    <div className="card img m-4">
+      <img src={personaje.image} className="card-img-top" alt="..." />
+      <div className="card-body">
+        <h5 className="card-title">{personaje.name}</h5>
+        <p className="card-text">
+          <p className="m-0">Status: {personaje.status}</p>
+          <p className="m-0">Creado: {personaje.created}</p>
+          <p className="m-0 two_lines">Origen: {personaje.origin.name}</p>
+        </p>
+        {children}
+      </div>
     </div>
   );
 };
 
-export default connect(null)(Personaje);
+export default Personaje;

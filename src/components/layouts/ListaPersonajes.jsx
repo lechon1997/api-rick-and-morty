@@ -1,24 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { seleccionarPersonje } from "../../actions/index";
+import Personaje from "../Personaje";
+import Card from "./Card";
+import BtnVerDetallePersonaje from "../BtnVerDetallePersonaje";
+import Buscador from "../Buscador";
 
-const ListaPersonajes = ({ personajes, dispatch }) => {
-  let navigate = useNavigate();
-  const eventSeleccionarPersonaje = (personaje) => {
-    dispatch(seleccionarPersonje(personaje));
-    navigate(`/personajes/${personaje.id}`);
-  };
+const ListaPersonajes = ({ personajes_busqueda, dispatch }) => {
   return (
-    <div>
-      {personajes.map((personaje) => (
-        <div
-          onClick={() => {
-            eventSeleccionarPersonaje(personaje);
-          }}
-          key={personaje.id}
-        >
-          <img src={personaje.image} alt="imagen" />
+    <div className="d-flex flex-wrap justify-content-center container">
+      <Buscador />
+      {personajes_busqueda.map((personaje) => (
+        <div key={personaje.id}>
+          <Card>
+            <Personaje personaje={personaje}>
+              <BtnVerDetallePersonaje personaje={personaje} />
+            </Personaje>
+          </Card>
         </div>
       ))}
     </div>
@@ -26,7 +23,7 @@ const ListaPersonajes = ({ personajes, dispatch }) => {
 };
 
 const mapStateToProps = (state) => ({
-  personajes: state.data.personajes,
+  personajes_busqueda: state.data.personajes_busqueda,
 });
 
 export default connect(mapStateToProps)(ListaPersonajes);

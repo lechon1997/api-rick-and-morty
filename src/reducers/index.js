@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 
 const initialState = {
   personajes: [],
+  personajes_busqueda: [],
   favoritos: [],
   episodios: [],
   mundos: [],
   personaje: {},
+  busqueda: [],
 };
 
 const rootReducer = combineReducers({
@@ -15,6 +17,7 @@ const rootReducer = combineReducers({
         return {
           ...state,
           personajes: action.payload,
+          personajes_busqueda: action.payload,
         };
 
       case "CARGAR_EPISODIOS":
@@ -22,10 +25,23 @@ const rootReducer = combineReducers({
           ...state,
           episodios: action.payload,
         };
+
+      case "CARGAR_PERSONAJES_EN_BUSQUEDA":
+        return {
+          ...state,
+          personajes_busqueda: [...state.personajes],
+        };
       case "CARGAR_MUNDOS":
         return {
           ...state,
           mundos: action.payload,
+        };
+      case "BUSCAR_PERSONAJE":
+        return {
+          ...state,
+          personajes_busqueda: [
+            ...state.personajes.filter((p) => p.name.includes(action.payload)),
+          ],
         };
 
       case "SELECCIONAR_PERSONAJE":

@@ -1,19 +1,28 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { buscarPersonaje } from "../actions";
 import "../estilos/global.scss";
 
-const Buscador = () => {
-  const [ventanaBuscador, setVentanaBuscador] = useState(false);
+const Buscador = ({ resultado, dispatch }) => {
   const handleInputChange = (event) => {
-    console.log(event.target.value);
+    dispatch(buscarPersonaje(event.target.value));
   };
   return (
-    <div className="w-500px h-400px">
-      <input name="buscador" type="text" onChange={handleInputChange} />
-      <div className="w-25 h-25">
-        <p>buscador</p>
+    <div className="w-100">
+      <div className="w-100 d-flex justify-content-center">
+        <input
+          className=" mt-4 wid-buscador min-width-300px"
+          name="buscador"
+          type="text"
+          onChange={handleInputChange}
+          placeholder="Buscar personaje"
+        />
       </div>
     </div>
   );
 };
 
-export default Buscador;
+const mapStateToProps = (state) => ({
+  resultado: state.data.busqueda,
+});
+export default connect(mapStateToProps)(Buscador);

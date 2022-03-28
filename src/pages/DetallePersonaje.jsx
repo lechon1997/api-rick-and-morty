@@ -1,15 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { agregarFavorito } from "../actions";
-const DetallePersonaje = ({ personaje, dispatch }) => {
-  const addFavorite = () => {
-    dispatch(agregarFavorito(personaje));
-  };
-  //console.log("el personaje seleccionado es: ", personaje);
+import CardDetalle from "../components/layouts/CardDetalle";
+const DetallePersonaje = ({ personaje }) => {
   return (
     <div>
-      <img src={personaje.image} alt="imagen" />
-      <button onClick={addFavorite}>Agregar a favoritos</button>
+      <CardDetalle personaje={personaje} />
     </div>
   );
 };

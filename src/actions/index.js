@@ -50,3 +50,15 @@ export function eliminarFavorito(personaje) {
     dispatch({ type: "ELIMINAR_FAVORITO", payload: personaje });
   };
 }
+
+export function buscarPersonaje(busqueda) {
+  return async (dispatch) => {
+    dispatch({ type: "BUSCAR_PERSONAJE", payload: busqueda });
+  };
+}
+
+export function cargarPersonajesEnBusqueda() {
+  return async (dispatch) => {
+    dispatch({ type: "CARGAR_PERSONAJES_EN_BUSQUEDA" });
+  };
+}

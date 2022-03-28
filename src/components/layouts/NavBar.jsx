@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav>
+    <nav className="d-flex justify-content-end m-3">
       <section>
-        <Link to="/">Inicio</Link>
-        <Link to="/favoritos">Favoritos</Link>
-        <Link to="/Episodios">Episodios</Link>
-        <Link to="/Mundos">Mundos</Link>
-        <Link to="/categorias">Categorias</Link>
+        <Link className="me-3 size-nav-options text-decoration-none" to="/">
+          Inicio
+        </Link>
+        <Link
+          className="me-3 size-nav-options text-decoration-none"
+          to="/favoritos"
+        >
+          Favoritos
+        </Link>
       </section>
     </nav>
   );
