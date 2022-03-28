@@ -5,7 +5,6 @@ const Buscador = () => {
   const [ventanaBuscador, setVentanaBuscador] = useState(false);
   const handleInputChange = (event) => {
     console.log(event.target.value);
-    console.log(busqueda);
   };
   return (
     <div className="w-500px h-400px">
