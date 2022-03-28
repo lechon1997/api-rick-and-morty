@@ -24,7 +24,7 @@ function App({ dispatch }) {
         <NavBar />
 
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/api-rick-and-morty/" element={<Inicio />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/personajes/:id" element={<DetallePersonaje />} />
         </Routes>
